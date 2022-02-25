@@ -1,0 +1,31 @@
+{
+  "name": "101197834_comp3133_assig1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junnysmiles/101197834_comp3133_assig1.git"
+  },
+  "keywords": [],
+  "author": "Jun Yan Gan - 101197834",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/junnysmiles/101197834_comp3133_assig1/issues"
+  },
+  "homepage": "https://github.com/junnysmiles/101197834_comp3133_assig1#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.3.0",
+    "mongoose": "^6.2.3"
+  }
+}
