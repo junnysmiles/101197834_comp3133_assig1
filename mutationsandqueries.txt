@@ -1,3 +1,4 @@
+-- Get All Users --
 query{
   getUsers{
     firstname
@@ -7,6 +8,8 @@ query{
   }
 }
 
+
+-- View Listings Created by Admin --
 query{
   viewListingsCreatedByAdmin(secret: "adminsecret"){
     listing_id
@@ -21,6 +24,24 @@ query{
   }
 }
 
+
+-- View Listings Created by User (Invalid) --
+query{
+  viewListingsCreatedByAdmin(secret: "usersecret"){
+    listing_id
+    listing_title
+    description
+    street
+    city
+    postal_code
+    price
+    email
+    username
+  }
+}
+
+
+-- Created a User --
 mutation{
   createUser(username:"junnysmiles",
   	firstname:"Jun",
@@ -37,6 +58,44 @@ mutation{
   }
 }
 
+
+-- Created Another User --
+mutation{
+  createUser(username:"lalala",
+  	firstname:"Minnie",
+  	lastname:"Mouse",
+  	password:"test123",
+  	email:"minnie@hotmail.com",
+  	type:"customer"){
+    username
+    firstname
+    lastname
+    password
+    email
+    type
+  }
+}
+
+
+-- Created an Admin User --
+mutation{
+  createUser(username:"helloworld!",
+  	firstname:"Peter",
+  	lastname:"Smith",
+  	password:"test123",
+  	email:"admin@hotmail.com",
+  	type:"admin"){
+    username
+    firstname
+    lastname
+    password
+    email
+    type
+  }
+}
+
+
+-- Create a Listing as a User (Invalid) --
 mutation{
   createListing(listing_id: "A",
   	listing_title: "Homey Place",
@@ -48,6 +107,31 @@ mutation{
   	email: "hello@gmail.com",
   	username: "helloworld",
   	secret: "usersecret"){
+    listing_id
+    listing_title
+    description
+    street
+    city
+    postal_code
+    price
+    email
+    username
+  }
+}
+
+
+-- Create a Listing as an Admin (Valid) --
+mutation{
+  createListing(listing_id: "B",
+  	listing_title: "Open Concept",
+  	description: "Wow!",
+  	street: "Amazing",
+  	city: "Ottawa",
+  	postal_code: "1234",
+  	price: 200,
+  	email: "lala@gmail.com",
+  	username: "helloworld!",
+  	secret: "adminsecret"){
     listing_id
     listing_title
     description
