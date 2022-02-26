@@ -1,33 +1,38 @@
 const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema({
-    username: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
-        lowercase: true
-    },
-    firstname: {
+const ListingSchema = new mongoose.Schema({
+    listing_id: {
         type: String,
         required: true,
         trim: true,
         lowercase: true
     },
-    lastname: {
+    listing_title: {
         type: String,
         required: true,
         trim: true,
         lowercase: true
     },
-    password: {
-        type: String,
+    description: {
+        type: String, 
         required: true,
-        minlength: 6,
-        validate: function(value) {
-            var passRegex = /^[A-Za-z0-9#$&_]+$/
-            return passRegex.test(value)
-        }
+        maxLength: 2000,
+    },
+    street: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    postal_code: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number, 
+        required: true
     },
     email: {
         type: String,
@@ -39,14 +44,14 @@ const UserSchema = new mongoose.Schema({
             return emailRegex.test(value)
         }
     },
-    type: {
+    username: {
         type: String,
         required: true,
-        enum: ['admin', 'customer'],
-        lowercase: true,
+        unique: true,
         trim: true,
+        lowercase: true
     }
 });
 
-const User = mongoose.model("User", UserSchema)
-module.exports = User
+const Listing = mongoose.model("Listing", ListingSchema);
+module.exports = Listing;
