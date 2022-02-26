@@ -32,7 +32,13 @@ const ListingSchema = new mongoose.Schema({
     },
     price: {
         type: Number, 
-        required: true
+        required: true,
+        default: 0,
+        validate(value) {
+            if (value < 0.0){
+               throw new Error("Please enter a valid price!");
+            }
+        }
     },
     email: {
         type: String,
