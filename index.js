@@ -1,22 +1,39 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const TypeDefs = require('./schema');
+Resolvers = require('./resolvers');
+const bodyParser = require('body-parser');
 const cors = require('cors');
+const { ApolloServer } = require('apollo-server-express');
 
-const url = "mongodb+srv://junnysmiles:junny1234@fullstack.xy5fk.mongodb.net/101197834_comp3133_assig1?retryWrites=true&w=majority"
+//Store sensetive information to env variables
+const dotenv = require('dotenv');
+dotenv.config();
+
+const url = process.env.MONGODB_URL;
 
 //Connect to mongoDB Atlas
 const connect = mongoose.connect(url, 
 { 
     useNewUrlParser: true,
     useUnifiedTopology: true
-})
+});
 
 connect.then(success => {
     console.log('Mongodb connection successful!')
 }).catch(err => {
     console.log('MongoDB Connection ERROR...' + err)
-})
+});
+
+//Define Apollo Server
+const server = new ApolloServer({
+    typeDefs: TypeDefs.typeDefs,
+    resolvers: Resolvers.resolvers
+});
 
 const app = express();
+app.use(bodyParser.json());
 app.use('*', cors());
-app.listen(3000, () => { console.log('Server is running...') })
+server.applyMiddleware({ app });
+app.listen({ port: process.env.PORT }, () =>
+  console.log(`🔥 Server ready at http://localhost:${process.env.PORT}${server.graphqlPath}`));
