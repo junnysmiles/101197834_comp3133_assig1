@@ -34,3 +34,6 @@ const BookingSchema = new mongoose.Schema({
         lowercase: true
     }
 });
+
+const Booking = mongoose.model("Booking", BookingSchema);
+module.exports = Booking;

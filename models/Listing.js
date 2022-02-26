@@ -16,7 +16,7 @@ const ListingSchema = new mongoose.Schema({
     description: {
         type: String, 
         required: true,
-        maxLength: 2000,
+        maxLength: 1000,
     },
     street: {
         type: String,
