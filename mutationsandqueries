@@ -1,0 +1,61 @@
+query{
+  getUsers{
+    firstname
+    lastname
+    email
+    type
+  }
+}
+
+query{
+  viewListingsCreatedByAdmin(secret: "adminsecret"){
+    listing_id
+    listing_title
+    description
+    street
+    city
+    postal_code
+    price
+    email
+    username
+  }
+}
+
+mutation{
+  createUser(username:"junnysmiles",
+  	firstname:"Jun",
+  	lastname:"Gan",
+  	password:"test123",
+  	email:"junyangan@hotmail.com",
+  	type:"customer"){
+    username
+    firstname
+    lastname
+    password
+    email
+    type
+  }
+}
+
+mutation{
+  createListing(listing_id: "A",
+  	listing_title: "Homey Place",
+  	description: "It's beautiful",
+  	street: "Heavenland",
+  	city: "Toronto",
+  	postal_code: "1234",
+  	price: 150,
+  	email: "hello@gmail.com",
+  	username: "helloworld",
+  	secret: "usersecret"){
+    listing_id
+    listing_title
+    description
+    street
+    city
+    postal_code
+    price
+    email
+    username
+  }
+}

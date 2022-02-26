@@ -1,8 +1,5 @@
 // ok heres what you need to do:
 /**
- * view all listings created by admin
- * search listing by name (DONE)
- * search listing by city/postal code (DONE)
  * view all user bookings logged in as user
  * view all listings added by admin as admin
  */
@@ -50,9 +47,18 @@ exports.typeDefs = gql `
     scalar Date
 
     type Query {
+        getUsers : [User]
+
+        login(username: String!, password: String!, type: String!) : Authentication
+
         searchListingByName(listing_title: String!) : [Listing]
         searchListingByCity(city: String!) : [Listing]
         searchListingByPostalCode(postal_code: String!) : [Listing]
+
+        searchBookingById(booking_id: String!) : [Booking]
+
+        viewAllListings : [Listing]
+        viewListingsCreatedByAdmin(secret: String!) : [Listing]
     }
 
     type Mutation {
