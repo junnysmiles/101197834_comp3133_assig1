@@ -93,6 +93,19 @@ query{
 }
 
 
+-- View User Bookings by Username --
+query{
+  viewUserBookings(username:"junnysmiles", secret:"usersecret"){
+    listing_id
+    booking_id
+    booking_date
+    booking_start
+    booking_end
+    username
+  }
+}
+
+
 -- View Listings Created by Admin --
 query{
   viewListingsCreatedByAdmin(secret: "adminsecret"){

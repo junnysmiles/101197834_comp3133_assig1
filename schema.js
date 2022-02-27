@@ -57,6 +57,8 @@ exports.typeDefs = gql `
 
         searchBookingById(booking_id: String!) : [Booking]
 
+        viewUserBookings(username: String!, secret: String!) : [Booking]
+
         viewAllListings : [Listing]
         viewListingsCreatedByAdmin(secret: String!) : [Listing]
     }

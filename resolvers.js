@@ -35,6 +35,13 @@ exports.resolvers = {
         searchBookingById: async (parent, args) => {
             return await Booking.find({"booking_id" : args.booking_id})
         },
+        viewUserBookings: async (parent, args) => {
+            if(args.username && args.secret == process.env.user_pw) {
+                return await Booking.find({username: args.username})
+            } else {
+                throw new Error("Only this user can access...")
+            }
+        },
         viewAllListings: async (parent, args) => {
             return await Listing.find({})
         },
