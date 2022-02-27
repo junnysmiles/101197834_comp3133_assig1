@@ -8,6 +8,21 @@ exports.resolvers = {
         getUsers: async (parent, args) => {
             return await User.find({})
         },
+        login: async (parent, args) => {
+            let user = await User.findOne({$and: [{username: args.username}, {password: args.password}]})
+
+            if(!user) {
+                throw new Error("User invalid, or combination does not match...")
+            }
+
+            if(user.type == 'customer') {
+                return {secret: process.env.user_pw}
+            }
+
+            if(user.type == 'admin') {
+                return {secret: process.env.admin_pw}
+            }
+        },
         searchListingByName: async (parent, args) => {
             return await Listing.find({"listing_title" : args.listing_title});
         },

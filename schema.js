@@ -49,7 +49,7 @@ exports.typeDefs = gql `
     type Query {
         getUsers : [User]
 
-        login(username: String!, password: String!, type: String!) : Authentication
+        login(username: String!, password: String!) : Authentication
 
         searchListingByName(listing_title: String!) : [Listing]
         searchListingByCity(city: String!) : [Listing]
@@ -87,6 +87,7 @@ exports.typeDefs = gql `
         createBooking(
             listing_id: String!
             booking_id: String!
+            booking_date: Date!
             booking_start: Date!
             booking_end: Date!
             username: String!

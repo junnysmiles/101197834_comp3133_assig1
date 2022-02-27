@@ -9,6 +9,90 @@ query{
 }
 
 
+-- Login Customer --
+query{
+  login(username:"junnysmiles", password:"test123"){
+    secret
+  }
+}
+
+
+-- Login Admin --
+query{
+  login(username:"helloworld!", password:"test123"){
+    secret
+  }
+}
+
+
+-- Login Invalid --
+query{
+  login(username:"junnysmiles", password:"test124"){
+    secret
+  }
+}
+
+
+-- Search Listing by Name --
+query{
+  searchListingByName(listing_title: "homey place") {
+    listing_id
+    listing_title
+    description
+    street
+    city
+    postal_code
+    price
+    email
+    username
+  }
+}
+
+
+-- Search Listing by City --
+query{
+  searchListingByCity(city: "Ottawa") {
+    listing_id
+    listing_title
+    description
+    street
+    city
+    postal_code
+    price
+    email
+    username
+  }
+}
+
+
+-- Search Listing by Postal Code --
+query{
+  searchListingByPostalCode(postal_code: "1234") {
+    listing_id
+    listing_title
+    description
+    street
+    city
+    postal_code
+    price
+    email
+    username
+  }
+}
+
+
+-- Search Bookings by ID --
+query{
+  searchBookingById(booking_id:"1"){
+    listing_id
+    booking_id
+    booking_date
+    booking_end
+    username
+  }
+}
+
+
 -- View Listings Created by Admin --
 query{
   viewListingsCreatedByAdmin(secret: "adminsecret"){
@@ -140,6 +224,44 @@ mutation{
     postal_code
     price
     email
+    username
+  }
+}
+
+
+-- Create a Booking as an Admin (Invalid) --
+mutation{
+  createBooking(listing_id: "A",
+  	booking_id: "1",
+  	booking_date: "2022-02-31",
+  	booking_start: "2022-03-22",
+  	booking_end: "2022-03-25"
+  	username: "junnysmiles",
+  	secret: "adminsecret"){
+    listing_id
+    booking_id
+    booking_date
+    booking_start
+    booking_end
+    username
+  }
+}
+
+
+-- Create a Booking as a User (Valid) --
+mutation{
+  createBooking(listing_id: "A",
+  	booking_id: "1",
+  	booking_date: "2022-02-31",
+  	booking_start: "2022-03-22",
+  	booking_end: "2022-03-25"
+  	username: "junnysmiles",
+  	secret: "usersecret"){
+    listing_id
+    booking_id
+    booking_date
+    booking_start
+    booking_end
     username
   }
 }
