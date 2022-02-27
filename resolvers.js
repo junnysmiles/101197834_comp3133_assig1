@@ -12,7 +12,7 @@ exports.resolvers = {
             let user = await User.findOne({$and: [{username: args.username}, {password: args.password}]})
 
             if(!user) {
-                throw new Error("User invalid, or combination does not match...")
+                throw new Error("User not found, or combination does not match...")
             }
 
             if(user.type == 'customer') {
