@@ -1,0 +1,35 @@
+{
+	"info": {
+		"_postman_id": "4a3ceb0c-bc5b-4dc1-92a6-25f072cac465",
+		"name": "101197834_comp3133_assig1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/graphql",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n    one: getUsers{\r\n        firstname\r\n        lastname\r\n        email\r\n        type\r\n  }\r\n\r\n    two: login(username:\"junnysmiles\", password:\"test123\"){\r\n        secret\r\n    }\r\n\r\n    three: login(username:\"helloworld!\", password:\"test123\"){\r\n        secret\r\n    }\r\n\r\n    four: login(username:\"junnysmiles\", password:\"test124\"){\r\n        secret\r\n    }\r\n\r\n    five: searchListingByName(listing_title: \"homey place\") {\r\n        listing_id\r\n        listing_title\r\n        description\r\n        street\r\n        city\r\n        postal_code\r\n        price\r\n        email\r\n        username\r\n    }\r\n\r\n    six: searchListingByCity(city: \"Ottawa\") {\r\n        listing_id\r\n        listing_title\r\n        description\r\n        street\r\n        city\r\n        postal_code\r\n        price\r\n        email\r\n        username\r\n    }\r\n\r\n    seven: searchListingByPostalCode(postal_code: \"1234\") {\r\n        listing_id\r\n        listing_title\r\n        description\r\n        street\r\n        city\r\n        postal_code\r\n        price\r\n        email\r\n        username\r\n    }\r\n\r\n    eight: searchBookingById(booking_id:\"1\"){\r\n        listing_id\r\n        booking_id\r\n        booking_date\r\n        booking_end\r\n        username\r\n    } \r\n\r\n    nine: viewUserBookings(username:\"junnysmiles\", secret:\"usersecret\"){\r\n        listing_id\r\n        booking_id\r\n        booking_date\r\n        booking_start\r\n        booking_end\r\n        username\r\n    }\r\n\r\n    ten: viewListingsCreatedByAdmin(secret: \"adminsecret\"){\r\n        listing_id\r\n        listing_title\r\n        description\r\n        street\r\n        city\r\n        postal_code\r\n        price\r\n        email\r\n        username\r\n    }\r\n\r\n    eleven: viewListingsCreatedByAdmin(secret: \"usersecret\"){\r\n        listing_id\r\n        listing_title\r\n        description\r\n        street\r\n        city\r\n        postal_code\r\n        price\r\n        email\r\n        username\r\n    }\r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
